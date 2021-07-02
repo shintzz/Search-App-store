@@ -14,13 +14,23 @@ class SearchViewController: UIViewController {
     var searchResults = [SearchResult]()
     var hasSearched = false
     
+    struct TableView {
+      struct CellIdentifiers {
+        static let searchResultCell = "SearchResultCell"
+        static let nothingFoundCell = "NothingFoundCell"
+      }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsets(top: 56, left: 0, bottom: 0, right: 0)
-        // Do any additional setup after loading the view.
+        var cellNib = UINib(nibName: TableView.CellIdentifiers.searchResultCell, bundle: nil)        // Do any additional setup after loading the view.
+        tableView.register(cellNib, forCellReuseIdentifier:TableView.CellIdentifiers.searchResultCell )
+        
+        cellNib = UINib(nibName: TableView.CellIdentifiers.nothingFoundCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.nothingFoundCell)
     }
-
+    
 
 }
 extension SearchViewController:UISearchBarDelegate{
@@ -62,19 +72,15 @@ extension SearchViewController:UITableViewDelegate,UITableViewDataSource{
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "SearchResultCell"
-        var cell:UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-        if cell == nil{
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-        }
+        let cellIdentifier = TableView.CellIdentifiers.searchResultCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier,for: indexPath) as! SearchResultCell
         if searchResults.count == 0{
-            cell.textLabel?.text = "Nothing Found"
-            cell.detailTextLabel!.text = ""
+            return tableView.dequeueReusableCell(withIdentifier:TableView.CellIdentifiers.nothingFoundCell , for: indexPath)
         }
         else{
             let searchResult =  searchResults[indexPath.row]
-            cell.textLabel?.text = searchResult.name
-            cell.detailTextLabel?.text = searchResult.artistName
+            cell.nameLabel.text = searchResult.name
+            cell.artistNameLabel.text = searchResult.artistName
         }
        
         return cell
