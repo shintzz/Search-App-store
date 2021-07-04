@@ -36,7 +36,23 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="49y-J3-BQ7">
                                 <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items/>
+                                <items>
+                                    <barButtonItem style="plain" id="Unv-jF-bPW">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="mBM-BJ-bDS">
+                                            <rect key="frame" x="16" y="5.5" width="343" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="All"/>
+                                                <segment title="Music"/>
+                                                <segment title="Software"/>
+                                                <segment title="Ebook"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="7X0-Fp-vCn"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                </items>
                             </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -44,6 +60,7 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="VuN-KW-Zee" secondAttribute="bottom" id="2Ui-Gm-8zr"/>
                             <constraint firstItem="h5n-00-RMa" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2vE-13-1bP"/>
+                            <constraint firstItem="49y-J3-BQ7" firstAttribute="top" secondItem="h5n-00-RMa" secondAttribute="bottom" constant="5" id="6Ca-Sd-J2g"/>
                             <constraint firstItem="VuN-KW-Zee" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ecj-Dt-W4p"/>
                             <constraint firstItem="h5n-00-RMa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="JaY-0k-AUx"/>
                             <constraint firstItem="h5n-00-RMa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LHx-O8-89b"/>
@@ -53,12 +70,13 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="h5n-00-RMa" id="r88-AL-OZh"/>
+                        <outlet property="segmentedControl" destination="mBM-BJ-bDS" id="1fw-iQ-DCe"/>
                         <outlet property="tableView" destination="VuN-KW-Zee" id="ze6-31-nGq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="18.840579710144929" y="77.678571428571431"/>
+            <point key="canvasLocation" x="18.399999999999999" y="76.911544227886068"/>
         </scene>
     </scenes>
     <resources>
