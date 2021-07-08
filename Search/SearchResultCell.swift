@@ -33,7 +33,7 @@ class SearchResultCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     // MARK: - Helper Methods
     func configure(for result: SearchResult) {
       nameLabel.text = result.name
